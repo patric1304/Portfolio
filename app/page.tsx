@@ -185,7 +185,7 @@ export default function LandingPage() {
                 <Briefcase className="size-6" />
               </div>
               <span className="text-xs font-medium text-slate-500 border border-white/10 px-2 py-1 rounded-full">
-                2024
+                Spring 2025
               </span>
             </div>
             
@@ -213,7 +213,7 @@ export default function LandingPage() {
                 <GraduationCap className="size-6" />
               </div>
               <span className="text-xs font-medium text-slate-500 border border-white/10 px-2 py-1 rounded-full">
-                2022 - Present
+                2023 - Present
               </span>
             </div>
             
