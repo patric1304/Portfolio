@@ -1,22 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, FileText, Award, Star, GraduationCap, Users, Lightbulb, MessageSquare, Briefcase, CreditCard, TrendingUp, Terminal, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, FileText, Award, Star, GraduationCap, Users, Lightbulb, MessageSquare, Briefcase, CreditCard, TrendingUp, Terminal, ArrowUpRight, MapPin, Globe, Brain, CircuitBoard, Cpu } from "lucide-react";
 
 const springIn = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
 
+const skills = [
+  {
+    title: "Full Stack Development",
+    subtitle: "React, Next.js, Node.js",
+    icon: <Globe className="size-6 text-emerald-300" />,
+    className: "md:col-span-2 bg-emerald-500/5 border-emerald-500/20",
+  },
+  {
+    title: "Machine Learning",
+    subtitle: "Python, TensorFlow, PyTorch",
+    icon: <Brain className="size-6 text-violet-300" />,
+    className: "bg-violet-500/5 border-violet-500/20",
+  },
+  {
+    title: "System Architecture",
+    subtitle: "C#, .NET, Microservices",
+    icon: <CircuitBoard className="size-6 text-cyan-300" />,
+    className: "bg-cyan-500/5 border-cyan-500/20",
+  },
+  {
+    title: "Low-Level Programming",
+    subtitle: "C, C++, OS Concepts",
+    icon: <Terminal className="size-6 text-orange-300" />,
+    className: "md:col-span-2 bg-orange-500/5 border-orange-500/20",
+  },
+];
+
 const projects = [
   {
-    title: "Modern Banking System",
-    tech: "C# .NET 8 • WPF • MVVM",
-    problem: "Simulating complex banking operations with a responsive desktop UI.",
-    solution: "Built a WPF app using MVVM architecture for clean code separation. Implemented JSON persistence and async operations for non-blocking transactions.",
-    highlight: "Custom currency conversion engine with real-time fee calculation.",
-    icon: <CreditCard className="size-6 text-purple-300" />,
-    link: "https://github.com/patric1304/Banking-App"
+    title: "Echoes: Digital Heritage Trail",
+    tech: "React Native • Node.js • Graph Algorithms",
+    problem: "Cultural heritage sites lack engaging, accessible digital narratives.",
+    solution: "Built a 'Fog of War' engine that unlocks media only within a 50m physical radius.",
+    highlight: "A location-based AR platform where historical narratives are 'echoed' to the user via geofencing.",
+    icon: <MapPin className="size-6 text-rose-300" />,
+    link: "#" // Assuming no link provided yet, or use a placeholder
   },
   {
     title: "AI Stock Predictor",
@@ -26,6 +53,15 @@ const projects = [
     highlight: "Smart caching system reducing API calls by 90% for free-tier optimization.",
     icon: <TrendingUp className="size-6 text-emerald-300" />,
     link: "https://github.com/patric1304/Stock-price-prediction-model"
+  },
+  {
+    title: "Modern Banking System",
+    tech: "C# .NET 8 • WPF • MVVM",
+    problem: "Simulating complex banking operations with a responsive desktop UI.",
+    solution: "Built a WPF app using MVVM architecture for clean code separation. Implemented JSON persistence and async operations for non-blocking transactions.",
+    highlight: "Custom currency conversion engine with real-time fee calculation.",
+    icon: <CreditCard className="size-6 text-purple-300" />,
+    link: "https://github.com/patric1304/Banking-App"
   },
   {
     title: "System Resource Manager",
@@ -135,8 +171,47 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Work Experience */}
+        {/* Technical Arsenal */}
         <section className="space-y-8">
+          <motion.div
+            initial={springIn.hidden}
+            whileInView={springIn.visible}
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            <h2 className="text-2xl font-semibold text-white flex items-center gap-2">
+              <Cpu className="size-6 text-cyan-300" />
+              Technical Arsenal
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.title}
+                variants={springIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`p-6 rounded-3xl border backdrop-blur-sm hover:bg-opacity-10 transition-colors ${skill.className}`}
+              >
+                <div className="h-full flex flex-col justify-between space-y-4">
+                  <div className="p-3 w-fit rounded-2xl bg-white/5 border border-white/5">
+                    {skill.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-1">{skill.title}</h3>
+                    <p className="text-sm text-slate-400 font-mono">{skill.subtitle}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Work Experience */}
+        <section id="experience" className="space-y-8">
           <motion.h2
             initial={springIn.hidden}
             whileInView={springIn.visible}
@@ -215,7 +290,7 @@ export default function AboutPage() {
         </section>
 
         {/* Project Case Studies */}
-        <section className="space-y-8">
+        <section id="projects" className="space-y-8">
           <motion.h2
             initial={springIn.hidden}
             whileInView={springIn.visible}
@@ -241,8 +316,8 @@ export default function AboutPage() {
                   <ArrowUpRight className="size-6 text-white/50" />
                 </div>
                 
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="p-4 h-fit rounded-xl bg-white/5 border border-white/5 shrink-0">
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  <div className="p-4 h-fit w-fit rounded-xl bg-white/5 border border-white/5 shrink-0">
                     {project.icon}
                   </div>
                   <div className="space-y-4 flex-1">
