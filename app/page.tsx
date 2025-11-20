@@ -7,7 +7,9 @@ import {
   Activity,
   Network,
   Briefcase,
-  ExternalLink
+  ExternalLink,
+  GraduationCap,
+  Calendar
 } from "lucide-react";
 import Link from "next/link";
 
@@ -19,7 +21,7 @@ const springIn = {
 export default function LandingPage() {
   return (
     <main className="relative min-h-screen overflow-hidden pt-32 pb-16">
-      <div className="relative z-10 max-w-6xl mx-auto px-6 space-y-32">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 space-y-40">
         {/* Hero Section */}
         <section className="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8">
           <motion.div
@@ -50,7 +52,7 @@ export default function LandingPage() {
 
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Patric</span>
+                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Patric Pop</span>
               </h1>
               <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
                 A Computer Science student bridging the gap between <br className="hidden md:block" />
@@ -82,7 +84,7 @@ export default function LandingPage() {
           </motion.div>
         </section>
 
-        {/* Featured Project */}
+        {/* Main project */}
         <section className="relative">
           <motion.div
             initial={springIn.hidden}
@@ -94,7 +96,7 @@ export default function LandingPage() {
               <div className="space-y-6 relative z-10">
                 <div className="inline-flex items-center gap-2 text-emerald-400 font-mono text-sm tracking-wider uppercase">
                   <Activity className="size-4" />
-                  Featured Project
+                  Technical Deep Dive
                 </div>
                 
                 <div className="space-y-4">
@@ -169,54 +171,61 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Latest Experience */}
-        <section>
+        {/* Background Section */}
+        <section className="grid gap-6">
+          {/* Work Experience */}
           <motion.div
             initial={springIn.hidden}
             whileInView={springIn.visible}
             viewport={{ once: true }}
-            className="rounded-2xl border border-white/5 bg-white/5 p-8 backdrop-blur-sm flex flex-col md:flex-row items-center justify-between gap-6"
+            className="group relative rounded-2xl border border-white/5 bg-white/5 p-8 backdrop-blur-sm hover:bg-white/10 transition-colors"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-start justify-between mb-6">
               <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
                 <Briefcase className="size-6" />
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white">Latest Role</h3>
-                <p className="text-slate-400">Full Stack Intern @ HiByte</p>
-              </div>
+              <span className="text-xs font-medium text-slate-500 border border-white/10 px-2 py-1 rounded-full">
+                2024
+              </span>
             </div>
-            <Link href="/about#experience" className="text-sm font-medium text-slate-300 hover:text-white transition-colors flex items-center gap-2">
-              View Details <ArrowRight className="size-4" />
+            
+            <h3 className="text-xl font-bold text-white mb-1">Full Stack Intern</h3>
+            <p className="text-emerald-400 font-medium mb-4">HiByte</p>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+              Contributed to enterprise-level backend systems and optimized frontend performance.
+            </p>
+
+            <Link href="/about#experience" className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+              View Details <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
-        </section>
 
-        {/* Call to Action */}
-        <section className="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-12 text-center space-y-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 blur-3xl" />
+          {/* Education */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={springIn.hidden}
+            whileInView={springIn.visible}
             viewport={{ once: true }}
-            className="relative z-10 space-y-6 max-w-2xl mx-auto"
+            transition={{ delay: 0.1 }}
+            className="group relative rounded-2xl border border-white/5 bg-white/5 p-8 backdrop-blur-sm hover:bg-white/10 transition-colors"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Ready to Collaborate?
-            </h2>
-            <p className="text-slate-300 text-lg leading-relaxed">
-              I am currently open to <span className="text-emerald-300 font-medium">internship opportunities</span> and <span className="text-cyan-300 font-medium">freelance projects</span>. 
-              Whether you have a question or just want to say hi, I'll try my best to get back to you!
-            </p>
-            <div className="pt-4">
-              <a
-                href="mailto:patric.pop13@gmail.com"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-semibold text-slate-950 shadow-lg hover:scale-105 transition-transform"
-              >
-                Let's Talk
-                <ArrowRight className="size-4" />
-              </a>
+            <div className="flex items-start justify-between mb-6">
+              <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                <GraduationCap className="size-6" />
+              </div>
+              <span className="text-xs font-medium text-slate-500 border border-white/10 px-2 py-1 rounded-full">
+                2022 - Present
+              </span>
             </div>
+            
+            <h3 className="text-xl font-bold text-white mb-1">B.Sc. Computer Science</h3>
+            <p className="text-purple-400 font-medium mb-4">Politehnica University of Timișoara</p>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+              Focusing on Software Engineering, Algorithms, and Distributed Systems.
+            </p>
+
+            <Link href="/about#education" className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+              View Details <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </motion.div>
         </section>
       </div>

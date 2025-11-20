@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, FileText, Award, Star, GraduationCap, Users, Lightbulb, MessageSquare, Briefcase, CreditCard, TrendingUp, Terminal, ArrowUpRight, MapPin, Globe, Brain, CircuitBoard, Cpu } from "lucide-react";
+import { Github, Linkedin, FileText, Award, Star, GraduationCap, Users, Lightbulb, MessageSquare, Briefcase, CreditCard, TrendingUp, Terminal, ArrowUpRight, MapPin, Globe, Brain, CircuitBoard, Cpu, Zap } from "lucide-react";
 
 const springIn = {
   hidden: { opacity: 0, y: 40 },
@@ -41,9 +41,9 @@ const projects = [
     tech: "React Native • Node.js • Graph Algorithms",
     problem: "Cultural heritage sites lack engaging, accessible digital narratives.",
     solution: "Built a 'Fog of War' engine that unlocks media only within a 50m physical radius.",
-    highlight: "A location-based AR platform where historical narratives are 'echoed' to the user via geofencing.",
+    highlight: "A location-based platform where historical narratives are 'echoed' to the user via geofencing.",
     icon: <MapPin className="size-6 text-rose-300" />,
-    link: "#" // Assuming no link provided yet, or use a placeholder
+    link: "https://github.com/ionutT77/Echoes-Digital-Heritage-Trail" 
   },
   {
     title: "AI Stock Predictor",
@@ -106,14 +106,14 @@ const softSkills = [
     icon: <Lightbulb className="size-6 text-yellow-300" />,
   },
   {
-    title: "Team Leadership",
+    title: "Teamwork",
     description: "Actively participated in development team during 48h Hackathon, UniHack.",
     icon: <Users className="size-6 text-blue-300" />,
   },
   {
-    title: "Communication",
-    description: "Translating technical concepts for non-technical stakeholders.",
-    icon: <MessageSquare className="size-6 text-pink-300" />,
+    title: "Rapid Learning",
+    description: "Efficiently mastering new technologies and adapting to evolving project requirements.",
+    icon: <Zap className="size-6 text-amber-300" />,
   },
 ];
 
@@ -255,7 +255,7 @@ export default function AboutPage() {
         </section>
 
         {/* Education */}
-        <section className="space-y-8">
+        <section id="education" className="space-y-8">
           <motion.h2
             initial={springIn.hidden}
             whileInView={springIn.visible}
