@@ -18,26 +18,26 @@ const springIn = {
 
 const skills = [
   {
-    title: "Systems Kernel Explorer",
-    subtitle: "C · Schedulers · Memory",
+    title: "Java",
+    subtitle: "Spring Boot · Enterprise",
     icon: <Cpu className="size-6 text-emerald-300" />,
     className: "md:col-span-2",
   },
   {
-    title: "Predictive Modeling",
-    subtitle: "Python · PyTorch",
+    title: "Python",
+    subtitle: "ML · Data Science",
     icon: <Brain className="size-6 text-violet-300" />,
     className: "",
   },
   {
-    title: "Fintech Interface Engineering",
-    subtitle: "C# · Domain Logic",
+    title: "C#",
+    subtitle: ".NET · Desktop Apps",
     icon: <CircuitBoard className="size-6 text-cyan-300" />,
     className: "",
   },
   {
-    title: "Simulation Architect",
-    subtitle: "Agent Systems · Viz",
+    title: "Git",
+    subtitle: "Version Control · CI/CD",
     icon: <Trophy className="size-6 text-amber-300" />,
     className: "md:col-span-2",
   },
@@ -55,17 +55,28 @@ export default function LandingPage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-8 max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm uppercase tracking-[0.3em] text-slate-300 backdrop-blur">
-              <Sparkles className="size-4 text-emerald-300" />
-              Portfolio 2025
+            <div className="flex items-center gap-6">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 p-1">
+                <div className="w-full h-full rounded-full bg-slate-900 overflow-hidden relative">
+                   {/* Placeholder for profile picture - replace src with actual image path */}
+                   <div className="absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-500 text-xs">
+                     Profile Pic
+                   </div>
+                </div>
+              </div>
+              <div>
+                <h1 className="text-4xl sm:text-5xl font-semibold leading-tight text-white">
+                  Patric
+                </h1>
+                <p className="text-lg text-slate-300 mt-2">
+                  CS Student | Full Stack Developer
+                </p>
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold leading-tight text-white">
-              Bridging Low-Level Logic with High-Level Design.
-            </h1>
+            
             <p className="text-lg text-slate-300 max-w-2xl leading-relaxed">
-              CS Student | Full Stack Developer | ML Enthusiast. <br />
-              Crafting fluid, glassy experiences that meld systems thinking with
-              human-centered polish.
+              Passionate about building robust systems and intuitive interfaces. 
+              Focused on clean code, efficient algorithms, and modern tech stacks.
             </p>
             
             <div className="pt-4">
