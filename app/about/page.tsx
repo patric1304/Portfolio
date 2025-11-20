@@ -1,26 +1,87 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, FileText, Award, Star } from "lucide-react";
+import { Github, Linkedin, FileText, Award, Star, GraduationCap, Users, Lightbulb, MessageSquare, Briefcase, CreditCard, TrendingUp, Terminal, ArrowUpRight } from "lucide-react";
 
 const springIn = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
 
-const achievements = [
+const projects = [
   {
-    title: "Pull Shark",
-    description: "Recognized for consistent contributions and code reviews.",
-    icon: <Star className="size-6 text-amber-300" />,
+    title: "Modern Banking System",
+    tech: "C# .NET 8 • WPF • MVVM",
+    problem: "Simulating complex banking operations with a responsive desktop UI.",
+    solution: "Built a WPF app using MVVM architecture for clean code separation. Implemented JSON persistence and async operations for non-blocking transactions.",
+    highlight: "Custom currency conversion engine with real-time fee calculation.",
+    icon: <CreditCard className="size-6 text-purple-300" />,
+    link: "https://github.com/patric1304/Banking-App"
   },
   {
-    title: "Hackathon Winner",
-    description: "First place in University CS Hackathon 2024.",
-    icon: <Award className="size-6 text-emerald-300" />,
+    title: "AI Stock Predictor",
+    tech: "Python • TensorFlow • NewsAPI",
+    problem: "Retail traders lack tools combining technical analysis with news sentiment.",
+    solution: "Created a hybrid ML pipeline feeding historical data and sentiment scores into a neural network. Includes smart caching to optimize API usage.",
+    highlight: "Smart caching system reducing API calls by 90% for free-tier optimization.",
+    icon: <TrendingUp className="size-6 text-emerald-300" />,
+    link: "https://github.com/patric1304/Stock-price-prediction-model"
   },
-  // Add more achievements here
+  {
+    title: "System Resource Manager",
+    tech: "C • Linux API • IPC",
+    problem: "Managing race conditions in concurrent process execution.",
+    solution: "Developed 'Treasure Manager', a multi-process simulation using mutexes and shared memory to handle resource contention safely.",
+    highlight: "Achieved deadlock-free execution using strict resource hierarchy.",
+    icon: <Terminal className="size-6 text-orange-300" />,
+    link: "https://github.com/patric1304/ProiectOS"
+  }
 ];
+
+const experience = [
+  {
+    role: "Full Stack Intern",
+    company: "HiByte",
+    location: "Timișoara, Romania",
+    period: "Internship",
+    details: [
+      "Contributed to full-stack web application development using Spring Boot (Backend) and Angular (Frontend).",
+      "Managed databases with PostgreSQL and utilized Docker for containerization.",
+      "Collaborated in an Agile environment, enhancing team communication and workflow.",
+      "Implemented dynamic UI functionality using JavaScript and modern frontend practices."
+    ]
+  }
+];
+
+const education = [
+  {
+    degree: "Computer Science Student",
+    school: "Politehnica University of Timișoara",
+    year: "2023 - Present",
+    details: "Currently 3rd year. Focus on automation, problem-solving, and innovative technologies.",
+  },
+];
+
+
+const softSkills = [
+  {
+    title: "Problem Solving",
+    description: "Breaking down complex systems into manageable logic.",
+    icon: <Lightbulb className="size-6 text-yellow-300" />,
+  },
+  {
+    title: "Team Leadership",
+    description: "Actively participated in development team during 48h Hackathon, UniHack.",
+    icon: <Users className="size-6 text-blue-300" />,
+  },
+  {
+    title: "Communication",
+    description: "Translating technical concepts for non-technical stakeholders.",
+    icon: <MessageSquare className="size-6 text-pink-300" />,
+  },
+];
+
+
 
 export default function AboutPage() {
   return (
@@ -64,7 +125,7 @@ export default function AboutPage() {
               LinkedIn
             </a>
             <a
-              href="/../POP_PATRIC_CV.pdf"
+              href="/POP_PATRIC_CV.pdf"
               download
               className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-6 py-3 font-medium text-white hover:bg-emerald-500/30 transition-colors backdrop-blur-md border border-emerald-500/30"
             >
@@ -74,7 +135,152 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Achievements */}
+        {/* Work Experience */}
+        <section className="space-y-8">
+          <motion.h2
+            initial={springIn.hidden}
+            whileInView={springIn.visible}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl font-semibold text-white flex items-center gap-2"
+          >
+            <Briefcase className="size-6 text-blue-300" />
+            Work Experience
+          </motion.h2>
+          <div className="space-y-6">
+            {experience.map((job, index) => (
+              <motion.div
+                key={job.role}
+                className="relative pl-8 border-l-2 border-white/10"
+                variants={springIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+              >
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500/50 border border-blue-500" />
+                <div className="space-y-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                    <h3 className="text-xl font-semibold text-white">{job.role}</h3>
+                    <span className="hidden sm:block text-slate-500">•</span>
+                    <span className="text-emerald-300 font-medium">{job.company}</span>
+                  </div>
+                  <p className="text-sm font-mono text-slate-400">{job.location} | {job.period}</p>
+                  <ul className="list-disc list-inside space-y-1 text-slate-300 pt-2">
+                    {job.details.map((detail, i) => (
+                      <li key={i} className="text-sm leading-relaxed pl-2 marker:text-blue-500">
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Education */}
+        <section className="space-y-8">
+          <motion.h2
+            initial={springIn.hidden}
+            whileInView={springIn.visible}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl font-semibold text-white flex items-center gap-2"
+          >
+            <GraduationCap className="size-6 text-emerald-300" />
+            Education
+          </motion.h2>
+          <div className="space-y-6">
+            {education.map((edu, index) => (
+              <motion.div
+                key={edu.degree}
+                className="relative pl-8 border-l-2 border-white/10"
+                variants={springIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+              >
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-emerald-500/50 border border-emerald-500" />
+                <div className="space-y-1">
+                  <span className="text-sm font-mono text-emerald-300">{edu.year}</span>
+                  <h3 className="text-xl font-semibold text-white">{edu.degree}</h3>
+                  <p className="text-slate-300">{edu.school}</p>
+                  <p className="text-slate-400 text-sm">{edu.details}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Project Case Studies */}
+        <section className="space-y-8">
+          <motion.h2
+            initial={springIn.hidden}
+            whileInView={springIn.visible}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl font-semibold text-white flex items-center gap-2"
+          >
+            <Award className="size-6 text-purple-300" />
+            Project Case Studies
+          </motion.h2>
+          <div className="grid gap-6 md:grid-cols-1">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                className="group relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl overflow-hidden hover:bg-white/10 transition-colors"
+                variants={springIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+              >
+                <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ArrowUpRight className="size-6 text-white/50" />
+                </div>
+                
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="p-4 h-fit rounded-xl bg-white/5 border border-white/5 shrink-0">
+                    {project.icon}
+                  </div>
+                  <div className="space-y-4 flex-1">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3 mb-1">
+                        <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+                        <span className="text-xs font-mono text-purple-300 bg-purple-500/10 px-2 py-1 rounded-full border border-purple-500/20">
+                          {project.tech}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 text-sm">
+                      <div className="space-y-1">
+                        <span className="text-slate-500 font-medium uppercase tracking-wider text-xs">The Challenge</span>
+                        <p className="text-slate-300 leading-relaxed">{project.problem}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <span className="text-slate-500 font-medium uppercase tracking-wider text-xs">The Solution</span>
+                        <p className="text-slate-300 leading-relaxed">{project.solution}</p>
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-white/5">
+                      <div className="flex items-start gap-2">
+                        <Star className="size-4 text-yellow-500/80 mt-0.5 shrink-0" />
+                        <p className="text-sm text-yellow-100/80 italic">"{project.highlight}"</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href={project.link} target="_blank" rel="noreferrer" className="absolute inset-0 z-10" aria-label={`View ${project.title}`} />
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Soft Skills */}
         <section className="space-y-8">
           <motion.h2
             initial={springIn.hidden}
@@ -83,27 +289,25 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-2xl font-semibold text-white"
           >
-            Achievements & Highlights
+            My Approach
           </motion.h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {achievements.map((item, index) => (
+          <div className="grid gap-6 md:grid-cols-3">
+            {softSkills.map((skill, index) => (
               <motion.div
-                key={item.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl flex items-start gap-4"
+                key={skill.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl space-y-4"
                 variants={springIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
               >
-                <div className="p-3 rounded-xl bg-white/5 border border-white/5">
-                  {item.icon}
+                <div className="p-3 w-fit rounded-xl bg-white/5 border border-white/5">
+                  {skill.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-400 mt-1">{item.description}</p>
+                  <h3 className="text-lg font-semibold text-white">{skill.title}</h3>
+                  <p className="text-slate-400 text-sm mt-2">{skill.description}</p>
                 </div>
               </motion.div>
             ))}
