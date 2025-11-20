@@ -1,5 +1,6 @@
 "use client";
 
+import { FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import {
   Cpu,
@@ -90,13 +91,13 @@ export default function LandingPage() {
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </button>
             </Link>
-            <a
-              href="https://github.com/patric1304"
-              target="_blank"
-              rel="noreferrer"
-              className="px-8 py-4 rounded-full bg-white/5 text-white font-medium border border-white/10 hover:bg-white/10 transition-all hover:scale-105 active:scale-95"
+             <a
+              href="/POP_PATRIC_CV.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-6 py-3 font-medium text-white hover:bg-emerald-500/30 transition-colors backdrop-blur-md border border-emerald-500/30"
             >
-              View GitHub
+              <FileText className="size-5" />
+              Download Resume
             </a>
           </motion.div>
         </section>
