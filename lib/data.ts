@@ -6,30 +6,49 @@ export const skills = [
         title: "Full Stack Development",
         subtitle: "React, Next.js, Node.js",
         icon: Globe,
-        className: "md:col-span-2 bg-emerald-500/5 border-emerald-500/20",
+        className: "md:col-span-2 bg-white/5 border-white/10",
         iconColor: "text-emerald-300"
     },
     {
         title: "Machine Learning",
         subtitle: "Python, TensorFlow, PyTorch",
         icon: Brain,
-        className: "bg-violet-500/5 border-violet-500/20",
+        className: "bg-white/5 border-white/10",
         iconColor: "text-violet-300"
     },
     {
         title: "System Architecture",
         subtitle: "C#, .NET, Microservices",
         icon: CircuitBoard,
-        className: "bg-cyan-500/5 border-cyan-500/20",
+        className: "bg-white/5 border-white/10",
         iconColor: "text-cyan-300"
     },
     {
         title: "Low-Level Programming",
-        subtitle: "C, C++, OS Concepts",
+        subtitle: "C, OS Concepts,Linux",
         icon: Terminal,
-        className: "md:col-span-2 bg-orange-500/5 border-orange-500/20",
+        className: "md:col-span-2 bg-white/5 border-white/10",
         iconColor: "text-orange-300"
     },
+];
+
+export const technicalSkills = [
+    {
+        category: "Full Stack Development",
+        skills: ["React", "Next.js", "Node.js", "TypeScript", "JavaScript", "HTML/CSS", "Angular"]
+    },
+    {
+        category: "Backend & Frameworks",
+        skills: ["Java", "Spring Boot", "C#", ".NET", "PostgreSQL", "Docker"]
+    },
+    {
+        category: "Machine Learning",
+        skills: ["Python", "TensorFlow", "PyTorch", "Pandas", "NumPy"]
+    },
+    {
+        category: "Low-Level & Systems",
+        skills: ["C", "OS Concepts", "Linux"]
+    }
 ];
 
 export const projects = [

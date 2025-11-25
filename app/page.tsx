@@ -12,6 +12,9 @@ import {
   Calendar
 } from "lucide-react";
 import Link from "next/link";
+import { technicalSkills, skills } from "../lib/data";
+import TechBadge from "./components/ui/TechBadge";
+import SkillCard from "./components/ui/SkillCard";
 
 const springIn = {
   hidden: { opacity: 0, y: 40 },
@@ -74,11 +77,42 @@ export default function LandingPage() {
             <a
               href="/PATRIC_POP_CV.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-6 py-3 font-medium text-white hover:bg-emerald-500/30 transition-colors backdrop-blur-md border border-emerald-500/30"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-6 py-3 font-medium text-white hover:bg-emerald-500/30 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 backdrop-blur-md border border-emerald-500/30"
             >
               <Download className="size-5" />
               Download CV
             </a>
+          </motion.div>
+        </section>
+
+        {/* Technical Arsenal */}
+        <section className="relative">
+          <motion.div
+            initial={springIn.hidden}
+            whileInView={springIn.visible}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="text-center space-y-3">
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                Technical Arsenal
+              </h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                Technologies and tools I work with across the full development stack
+              </p>
+            </div>
+
+            {/* Broad Skill Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {skills.map((skill, index) => (
+                <SkillCard
+                  key={skill.title}
+                  {...skill}
+                  index={index}
+                  variants={springIn}
+                />
+              ))}
+            </div>
           </motion.div>
         </section>
 

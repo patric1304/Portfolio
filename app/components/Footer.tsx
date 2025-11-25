@@ -8,7 +8,7 @@ export default function Footer() {
     <footer id="contact" className="relative z-10 border-t border-white/10 bg-ink-950/50 backdrop-blur-xl mt-20 pt-20 pb-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 mb-16">
-          
+
           {/* Left Column: Contact Info */}
           <div className="space-y-8">
             <div className="space-y-4">
@@ -52,7 +52,7 @@ export default function Footer() {
                 href="https://github.com/patric1304"
                 target="_blank"
                 rel="noreferrer"
-                className="p-3 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+                className="p-3 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 hover:scale-110 hover:shadow-lg hover:shadow-white/30 transition-all duration-300"
                 aria-label="GitHub"
               >
                 <Github className="size-5" />
@@ -61,7 +61,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/patric-pop-70b75033a/"
                 target="_blank"
                 rel="noreferrer"
-                className="p-3 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-[#0077b5] hover:bg-[#0077b5]/10 transition-all"
+                className="p-3 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-[#0077b5] hover:bg-[#0077b5]/10 hover:scale-110 hover:shadow-lg hover:shadow-[#0077b5]/50 transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="size-5" />
@@ -124,7 +124,7 @@ export default function Footer() {
             </form>
           </div>
         </div>
-        
+
         <div className="pt-8 border-t border-white/5 text-center text-xs text-slate-500">
           <p>© {new Date().getFullYear()} Patric Pop. Built with Next.js, Tailwind CSS & Framer Motion</p>
         </div>

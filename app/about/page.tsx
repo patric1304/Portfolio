@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, FileText, Cpu, Briefcase, GraduationCap, Award } from "lucide-react";
-import { skills, projects, experience, education, softSkills } from "../../lib/data";
+import { projects, experience, education, softSkills, technicalSkills } from "../../lib/data";
 import SkillCard from "../components/ui/SkillCard";
 import ExperienceItem from "../components/ui/ExperienceItem";
 import ProjectCard from "../components/ui/ProjectCard";
+import TechBadge from "../components/ui/TechBadge";
 
 const springIn = {
   hidden: { opacity: 0, y: 40 },
@@ -39,7 +40,7 @@ export default function AboutPage() {
               href="https://github.com/patric1304"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 font-medium text-white hover:bg-white/20 transition-colors backdrop-blur-md border border-white/10"
+              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 font-medium text-white hover:bg-white/20 hover:scale-105 hover:shadow-lg hover:shadow-white/30 transition-all duration-300 backdrop-blur-md border border-white/10"
             >
               <Github className="size-5" />
               GitHub
@@ -48,7 +49,7 @@ export default function AboutPage() {
               href="https://www.linkedin.com/in/patric-pop-70b75033a/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#0077b5]/20 px-6 py-3 font-medium text-white hover:bg-[#0077b5]/30 transition-colors backdrop-blur-md border border-[#0077b5]/30"
+              className="inline-flex items-center gap-2 rounded-full bg-[#0077b5]/20 px-6 py-3 font-medium text-white hover:bg-[#0077b5]/30 hover:scale-105 hover:shadow-lg hover:shadow-[#0077b5]/50 transition-all duration-300 backdrop-blur-md border border-[#0077b5]/30"
             >
               <Linkedin className="size-5" />
               LinkedIn
@@ -56,7 +57,7 @@ export default function AboutPage() {
             <a
               href="/POP_PATRIC_CV.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-6 py-3 font-medium text-white hover:bg-emerald-500/30 transition-colors backdrop-blur-md border border-emerald-500/30"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-6 py-3 font-medium text-white hover:bg-emerald-500/30 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 backdrop-blur-md border border-emerald-500/30"
             >
               <FileText className="size-5" />
               Download Resume
@@ -64,7 +65,8 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Technical Arsenal */}
+
+        {/* Skills */}
         <section className="space-y-8">
           <motion.div
             initial={springIn.hidden}
@@ -74,20 +76,43 @@ export default function AboutPage() {
           >
             <h2 className="text-2xl font-semibold text-white flex items-center gap-2">
               <Cpu className="size-6 text-cyan-300" />
-              Technical Arsenal
+              Skills
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {skills.map((skill, index) => (
-              <SkillCard
-                key={skill.title}
-                {...skill}
-                index={index}
-                variants={springIn}
-              />
-            ))}
-          </div>
+          {/* Individual Skills */}
+          <motion.div
+            initial={springIn.hidden}
+            whileInView={springIn.visible}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div className="grid gap-6 md:grid-cols-2">
+              {technicalSkills.map((category, categoryIndex) => (
+                <motion.div
+                  key={category.category}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: categoryIndex * 0.1 }}
+                  className="space-y-3"
+                >
+                  <h4 className="text-sm font-medium text-slate-400 uppercase tracking-wider">
+                    {category.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <TechBadge
+                        key={skill}
+                        skill={skill}
+                        index={skillIndex}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </section>
 
         {/* Work Experience */}
