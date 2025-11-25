@@ -55,12 +55,12 @@ export default function AboutPage() {
               LinkedIn
             </a>
             <a
-              href="/POP_PATRIC_CV.pdf"
+              href="/PATRIC_POP_CV.pdf"
               download
               className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-6 py-3 font-medium text-white hover:bg-emerald-500/30 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 backdrop-blur-md border border-emerald-500/30"
             >
               <FileText className="size-5" />
-              Download Resume
+              Download CV
             </a>
           </div>
         </motion.div>
