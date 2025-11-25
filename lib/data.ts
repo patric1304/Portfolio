@@ -35,7 +35,7 @@ export const skills = [
 export const projects = [
     {
         title: "Echoes: Digital Heritage Trail",
-        tech: "React Native • Node.js • Graph Algorithms",
+        tech: "React • Node.js • Graph Algorithms",
         problem: "Cultural heritage sites lack engaging, accessible digital narratives.",
         solution: "Built a 'Fog of War' engine that unlocks media only within a 50m physical radius.",
         highlight: "A location-based platform where historical narratives are 'echoed' to the user via geofencing.",

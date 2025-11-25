@@ -72,7 +72,7 @@ export default function LandingPage() {
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <a
-              href="/POP_PATRIC_CV.pdf"
+              href="/PATRIC_POP_CV.pdf"
               download
               className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-6 py-3 font-medium text-white hover:bg-emerald-500/30 transition-colors backdrop-blur-md border border-emerald-500/30"
             >
