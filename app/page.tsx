@@ -133,15 +133,15 @@ export default function LandingPage() {
 
                 <div className="space-y-4">
                   <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    AI Stock Sentiment Predictor
+                    iTECify / CollabCode
                   </h2>
                   <p className="text-slate-300 text-lg leading-relaxed">
-                    A hybrid machine learning pipeline that correlates news sentiment with historical price action to forecast market trends.
+                    Built during iTEC as a team project, this is a full-stack collaborative coding platform with realtime editing, secure Docker-based execution, Supabase-powered auth/data sync, and Gemini-assisted workflows.
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {["Python", "TensorFlow", "NewsAPI", "Pandas"].map((tag) => (
+                  {["React", "Fastify", "Supabase", "Docker", "Monaco", "Gemini"].map((tag) => (
                     <span key={tag} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-slate-300">
                       {tag}
                     </span>
@@ -150,44 +150,39 @@ export default function LandingPage() {
 
                 <div className="pt-4 flex items-center gap-6">
                   <Link href="/about#projects" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20">
-                    View Analysis
+                    View Project
                     <ArrowRight className="size-4" />
                   </Link>
+                  <a
+                    href="https://github.com/AlexandruCL/iTEC_2026/tree/main"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/5 text-white font-semibold hover:bg-white/10 transition-colors"
+                  >
+                    GitHub Repo
+                    <ExternalLink className="size-4" />
+                  </a>
                 </div>
               </div>
 
-              {/* Abstract Visual - Neural Network / Data Stream */}
+              {/* Abstract Visual - Execution Pipeline */}
               <div className="relative h-64 lg:h-full min-h-[300px] rounded-2xl border border-white/5 bg-black/20 overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]" />
 
-                {/* Nodes and Connections */}
                 <div className="relative w-full h-full p-8">
-                  {/* Animated Data Stream Lines */}
-                  <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent animate-pulse" />
-                  <div className="absolute top-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent delay-75 animate-pulse" />
-                  <div className="absolute top-2/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent delay-150 animate-pulse" />
+                  <div className="absolute top-1/4 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent animate-pulse" />
+                  <div className="absolute top-1/2 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent animate-pulse" />
+                  <div className="absolute top-3/4 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent animate-pulse" />
 
-                  {/* Nodes */}
-                  <div className="absolute top-1/2 left-1/4 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)] animate-ping" />
-                  <div className="absolute top-1/3 left-1/2 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
-                  <div className="absolute top-2/3 left-3/4 w-4 h-4 rounded-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)] animate-pulse" />
-
-                  {/* Connecting Lines (SVG) */}
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
-                    <path d="M100 150 Q 200 100 300 150 T 500 150" fill="none" stroke="url(#grad1)" strokeWidth="2" />
-                    <defs>
-                      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="rgba(16,185,129,0)" />
-                        <stop offset="50%" stopColor="rgba(16,185,129,1)" />
-                        <stop offset="100%" stopColor="rgba(16,185,129,0)" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                  <div className="absolute top-10 left-10 rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs font-mono text-cyan-300">queued</div>
+                  <div className="absolute top-[42%] left-[36%] rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs font-mono text-emerald-300">scanning</div>
+                  <div className="absolute top-[62%] right-10 rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs font-mono text-cyan-200">building</div>
+                  <div className="absolute bottom-10 left-[30%] rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs font-mono text-emerald-200">running</div>
                 </div>
 
                 <div className="absolute bottom-4 right-4 flex items-center gap-2 text-xs text-emerald-500/50 font-mono">
                   <Network className="size-3" />
-                  <span>NEURAL_NET_ACTIVE</span>
+                  <span>WS_STREAM_ACTIVE</span>
                 </div>
               </div>
             </div>

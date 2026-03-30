@@ -1,4 +1,4 @@
-import { Globe, Brain, CircuitBoard, Terminal, MapPin, TrendingUp, CreditCard, Lightbulb, Users, Zap } from "lucide-react";
+import { Globe, Brain, CircuitBoard, Terminal, MapPin, CreditCard, Lightbulb, Users, Zap } from "lucide-react";
 import React from "react";
 
 export const skills = [
@@ -53,6 +53,16 @@ export const technicalSkills = [
 
 export const projects = [
     {
+        title: "iTECify / CollabCode",
+        tech: "React • Fastify • Supabase • Docker • Monaco • Gemini",
+        problem: "Remote pair-programming tools often miss secure code execution, robust realtime collaboration primitives, and integrated AI assistance in one platform.",
+        solution: "Built at iTEC as a team: a full-stack collaborative coding platform with Monaco editor, Supabase auth/realtime, presence and cursor sync, line locks, timeline replay, and a Fastify execution service that runs JS/Python/Rust in constrained Docker sandboxes with pre-run scanning, streaming logs, and stop/input controls.",
+        highlight: "Unified collaborative editing, secure-ish containerized execution, and Gemini-powered coding assistance in an authenticated multi-user environment with session persistence.",
+        icon: Terminal,
+        iconColor: "text-cyan-300",
+        link: "https://github.com/AlexandruCL/iTEC_2026/tree/main"
+    },
+    {
         title: "Echoes: Digital Heritage Trail",
         tech: "React • Node.js • Graph Algorithms",
         problem: "Cultural heritage sites lack engaging, accessible digital narratives.",
@@ -61,16 +71,6 @@ export const projects = [
         icon: MapPin,
         iconColor: "text-rose-300",
         link: "https://github.com/ionutT77/Echoes-Digital-Heritage-Trail"
-    },
-    {
-        title: "AI Stock Predictor",
-        tech: "Python • TensorFlow • NewsAPI",
-        problem: "Retail traders lack tools combining technical analysis with news sentiment.",
-        solution: "Created a hybrid ML pipeline feeding historical data and sentiment scores into a neural network. Includes smart caching to optimize API usage.",
-        highlight: "Smart caching system reducing API calls by 90% for free-tier optimization.",
-        icon: TrendingUp,
-        iconColor: "text-emerald-300",
-        link: "https://github.com/patric1304/Stock-price-prediction-model"
     },
     {
         title: "Modern Banking System",
