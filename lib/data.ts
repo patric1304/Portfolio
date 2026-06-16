@@ -1,4 +1,4 @@
-import { Globe, Brain, CircuitBoard, Terminal, MapPin, CreditCard, Lightbulb, Users, Zap } from "lucide-react";
+import { Globe, Brain, CircuitBoard, Terminal, MapPin, CreditCard, Lightbulb, Users, Zap, Activity } from "lucide-react";
 import React from "react";
 
 export const skills = [
@@ -61,6 +61,16 @@ export const projects = [
         icon: Terminal,
         iconColor: "text-cyan-300",
         link: "https://github.com/AlexandruCL/iTEC_2026/tree/main"
+    },
+    {
+        title: "Water Quality IoT Monitor",
+        tech: "Raspberry Pi • AWS IoT • Django • LSTM Autoencoder • ONNX",
+        problem: "Traditional water quality monitoring relies on static thresholds that produce excessive false alarms from sensor noise, while missing subtle multi-parameter anomalies.",
+        solution: "Built an end-to-end IoT pipeline: Raspberry Pi sensors → AWS IoT Core (MQTT/TLS) → Lambda → Django REST API with an LSTM Autoencoder for anomaly detection. The ML model engineers 20 features from 4 raw sensors and acts as a gatekeeper in a two-layer alerting system, suppressing false alarms and detecting pattern deviations that static thresholds miss.",
+        highlight: "Achieved 0.946 ROC AUC with a smart two-layer alert matrix — threshold breaches alone don't trigger alerts; the ML model must confirm, reducing false alarms while catching subtle multi-sensor anomalies.",
+        icon: Activity,
+        iconColor: "text-emerald-300",
+        link: "https://github.com/patric1304/Water-quality-IOT-project"
     },
     {
         title: "Echoes: Digital Heritage Trail",

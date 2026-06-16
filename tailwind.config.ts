@@ -10,14 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          950: "#05060a",
+          950: "#030712",
+          900: "#0a0d14",
         },
       },
       boxShadow: {
-        glass: "0 20px 80px -40px rgba(94,234,212,0.8)",
+        glass: "0 20px 80px -40px rgba(16, 185, 129, 0.15)",
+        "glow-sm": "0 0 20px rgba(16, 185, 129, 0.15)",
+        "glow-md": "0 0 40px rgba(16, 185, 129, 0.2)",
       },
       borderRadius: {
         "4xl": "2.5rem",
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
     },
   },

@@ -1,74 +1,110 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Phone } from "lucide-react";
-
-const springIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+import { Send, Mail, MapPin, Phone, MessageSquare } from "lucide-react";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent">(
+    "idle"
+  );
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus("sending");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      await fetch("https://formspree.io/f/mblwwrqq", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      setFormStatus("sent");
+      form.reset();
+      setTimeout(() => setFormStatus("idle"), 4000);
+    } catch {
+      setFormStatus("idle");
+    }
+  };
+
   return (
-    <main className="relative min-h-screen pt-32 pb-16">
-      <div className="relative z-10 max-w-4xl mx-auto px-6">
-        
+    <main className="relative min-h-screen pt-40 pb-24 overflow-hidden">
+      
+      {/* Background Decor */}
+      <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          initial={springIn.hidden}
-          animate={springIn.visible}
-          transition={{ duration: 0.6 }}
-          className="text-center space-y-6 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center space-y-6 mb-24"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
-            Let's <span className="text-emerald-400">Connect</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-4">
+            <MessageSquare className="size-4 text-cyan-400" />
+            <p className="text-xs font-mono tracking-[0.2em] uppercase text-cyan-400">
+              Get In Touch
+            </p>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight drop-shadow-2xl">
+            Let&apos;s build something{" "}
+            <br className="hidden md:block"/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 text-shimmer pb-2">
+              extraordinary.
+            </span>
           </h1>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Have a project in mind or just want to say hi? I'm currently open for internships and freelance opportunities.
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            I&apos;m currently open for internships, freelance opportunities, or just a chat about technology. Drop a message below.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-[1fr_1.5fr] gap-12">
-          
+        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="space-y-8"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="space-y-10"
           >
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold text-white">Contact Details</h3>
-              
-              <div className="flex items-start gap-4 text-slate-300">
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                  <Mail className="size-5 text-emerald-400" />
+              <h3 className="text-sm font-mono text-slate-500 uppercase tracking-[0.2em]">
+                Direct Contact
+              </h3>
+
+              <a
+                href="mailto:patric.pop13@gmail.com"
+                className="group flex items-start gap-5 text-slate-300 hover:text-white transition-colors"
+              >
+                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] group-hover:scale-110 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/5 transition-all duration-300 shadow-lg">
+                  <Mail className="size-6 text-emerald-400" />
                 </div>
-                <div>
-                  <p className="text-sm text-slate-500 mb-1">Email</p>
-                  <a href="mailto:patric.pop13@gmail.com" className="hover:text-white transition-colors">
-                    patric.pop13@gmail.com
-                  </a>
+                <div className="space-y-1 pt-1">
+                  <p className="text-xs font-mono text-slate-500 tracking-wider">Email</p>
+                  <p className="font-medium text-lg">patric.pop13@gmail.com</p>
+                </div>
+              </a>
+
+              <div className="group flex items-start gap-5 text-slate-300">
+                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] group-hover:scale-110 group-hover:border-violet-500/30 group-hover:bg-violet-500/5 transition-all duration-300 shadow-lg">
+                  <Phone className="size-6 text-violet-400" />
+                </div>
+                <div className="space-y-1 pt-1">
+                  <p className="text-xs font-mono text-slate-500 tracking-wider">Phone</p>
+                  <p className="font-medium text-lg">(+40) 0745 235 833</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 text-slate-300">
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                  <Phone className="size-5 text-violet-400" />
+              <div className="group flex items-start gap-5 text-slate-300">
+                <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] group-hover:scale-110 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/5 transition-all duration-300 shadow-lg">
+                  <MapPin className="size-6 text-cyan-400" />
                 </div>
-                <div>
-                  <p className="text-sm text-slate-500 mb-1">Phone</p>
-                  <p>(+40) 0745 235 833</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 text-slate-300">
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                  <MapPin className="size-5 text-cyan-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-slate-500 mb-1">Location</p>
-                  <p>Timisoara, Romania</p>
+                <div className="space-y-1 pt-1">
+                  <p className="text-xs font-mono text-slate-500 tracking-wider">Location</p>
+                  <p className="font-medium text-lg">Timișoara, Romania</p>
                 </div>
               </div>
             </div>
@@ -76,58 +112,82 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="rounded-[2.5rem] border border-white/[0.08] bg-white/[0.02] p-8 md:p-12 backdrop-blur-xl shadow-2xl relative overflow-hidden group hover:border-emerald-500/20 transition-colors duration-500"
           >
-            <form
-              action="https://formspree.io/f/mblwwrqq"
-              method="POST"
-              className="space-y-6"
-            >
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium text-slate-300">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  required
-                  className="w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all"
-                  placeholder="John Doe"
-                />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-emerald-500/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl pointer-events-none" />
+
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label
+                    htmlFor="name"
+                    className="text-xs font-mono text-slate-400 uppercase tracking-widest pl-2"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    className="w-full rounded-2xl bg-white/[0.03] border border-white/[0.08] px-5 py-4 text-white placeholder-slate-600 focus:border-emerald-500/50 focus:bg-white/[0.05] focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all text-base"
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="email"
+                    className="text-xs font-mono text-slate-400 uppercase tracking-widest pl-2"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    className="w-full rounded-2xl bg-white/[0.03] border border-white/[0.08] px-5 py-4 text-white placeholder-slate-600 focus:border-emerald-500/50 focus:bg-white/[0.05] focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all text-base"
+                    placeholder="john@example.com"
+                  />
+                </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-slate-300">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  className="w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all"
-                  placeholder="john@example.com"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-slate-300">Message</label>
+                <label
+                  htmlFor="message"
+                  className="text-xs font-mono text-slate-400 uppercase tracking-widest pl-2"
+                >
+                  Message
+                </label>
                 <textarea
                   name="message"
                   id="message"
-                  rows={4}
+                  rows={5}
                   required
-                  className="w-full rounded-xl bg-black/20 border border-white/10 px-4 py-3 text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
-                  placeholder="Tell me about your project..."
+                  className="w-full rounded-2xl bg-white/[0.03] border border-white/[0.08] px-5 py-4 text-white placeholder-slate-600 focus:border-emerald-500/50 focus:bg-white/[0.05] focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all resize-none text-base"
+                  placeholder="Tell me about your project or idea..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 font-semibold text-white hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20"
+                disabled={formStatus === "sending"}
+                className="w-full inline-flex items-center justify-center gap-3 rounded-2xl bg-emerald-500 px-8 py-5 font-bold text-white hover:bg-emerald-400 hover:scale-[1.02] transition-all duration-300 shadow-[0_0_40px_-10px_rgba(16,185,129,0.5)] disabled:opacity-50 disabled:hover:scale-100 text-lg group/btn"
               >
-                <Send className="size-4" />
-                Send Message
+                {formStatus === "sending" ? (
+                  <span>Sending...</span>
+                ) : formStatus === "sent" ? (
+                  <span>Message Sent ✓</span>
+                ) : (
+                  <>
+                    <Send className="size-5 group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-transform" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </motion.div>
